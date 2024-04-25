@@ -47,6 +47,7 @@
         - device-mapper-persistent-data
         - lvm2
         - docker
+        - systemd-libs
       state: present
       lock_timeout: 300
 
