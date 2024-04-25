@@ -46,15 +46,14 @@
         - yum-utils
         - device-mapper-persistent-data
         - lvm2
+        - docker
       state: present
       lock_timeout: 300
-      
-  - name: Add extras repository
-    shell: yum-config-manager --enable extras 
- 
-  - name: Install docker-ce (centos) via amazon-linux-extras packages
-    shell: "amazon-linux-extras install docker -y"
 
+  - name: Installing python library for the Docker Remote API
+      pip:
+        name: docker-py
+      
   - name: Enable Docker CE service at startup 
     service:
       name: docker
