@@ -30,7 +30,7 @@
     become: yes
     docker_container:
       name: traccar
-      image: traccar/traccar:4.6
+      image: traccar/traccar:latest
       state: started
       recreate: yes
       restart_policy: always
@@ -49,7 +49,7 @@
     become: yes
     docker_container:
       name: traccar
-      image: traccar/traccar:4.6
+      image: traccar/traccar:latest
       state: started
       recreate: yes
       restart_policy: always
