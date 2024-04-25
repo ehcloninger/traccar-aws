@@ -44,7 +44,7 @@
 
   - name: Install Python libraries with pip
     become: yes
-    pip:
+    ansible.builtin.pip:
       name: docker
 
   - name: Install Docker
