@@ -51,16 +51,16 @@
       lock_timeout: 300
       
   - name: Add extras repository
-      shell: yum-config-manager --enable extras 
+    shell: yum-config-manager --enable extras 
  
   - name: Install docker-ce (centos) via amazon-linux-extras packages
-      shell: "amazon-linux-extras install docker -y"
+    shell: "amazon-linux-extras install docker -y"
 
   - name: Enable Docker CE service at startup 
-      service:
-        name: docker
-        state: started
-        enabled: yes
+    service:
+      name: docker
+      state: started
+      enabled: yes
 
   - name: Add ec2-user to docker group
     become: yes
