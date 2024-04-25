@@ -29,7 +29,12 @@
     lineinfile:
       path: /etc/fstab
       line: "/swapfile swap swap defaults 0 0"
-
+      
+  - name: Update all packages
+      yum:
+        name: '*'
+        state: latest
+        update_only: yes  
 
   # Install packages
   - name: Install some yum packages
@@ -39,19 +44,24 @@
         - nc
         - git
         - python3-pip
+        - yum-utils
+        - device-mapper-persistent-data
+        - lvm2
+        - amazon-linux-extras
       state: present
       lock_timeout: 300
+      
+  - name: Add extras repository
+      shell: yum-config-manager --enable extras 
+ 
+  - name: Install docker-ce (centos) via amazon-linux-extras packages
+      shell: "amazon-linux-extras install docker -y"
 
-  - name: Install Docker
-    become: yes
-    shell: "amazon-linux-extras install -y docker"
-
-  - name: Enable and start Docker
-    become: yes
-    systemd:
-      name: docker
-      state: started
-      enabled: yes
+  - name: Enable Docker CE service at startup 
+      service:
+        name: docker
+        state: started
+        enabled: yes
 
   - name: Add ec2-user to docker group
     become: yes
