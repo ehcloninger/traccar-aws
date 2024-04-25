@@ -42,11 +42,6 @@
       state: present
       lock_timeout: 300
 
-  - name: Install Python libraries with pip
-    become: yes
-    ansible.builtin.pip:
-      name: docker
-
   - name: Install Docker
     become: yes
     shell: "amazon-linux-extras install -y docker"
