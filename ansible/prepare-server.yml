@@ -38,7 +38,7 @@
       name:
         - nc
         - git
-        - python2-pip
+        - python3-pip
       state: present
       lock_timeout: 300
 
