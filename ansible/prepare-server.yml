@@ -12,7 +12,6 @@
 
   - debug: msg="Server uptime is {{ uptime.stdout }}"
 
-
   # Swap file
   - name: Check if swap file already exists
     become: yes
@@ -31,10 +30,10 @@
       line: "/swapfile swap swap defaults 0 0"
       
   - name: Update all packages
-      yum:
-        name: '*'
-        state: latest
-        update_only: yes  
+    yum:
+      name: '*'
+      state: latest
+      update_only: yes  
 
   # Install packages
   - name: Install some yum packages
