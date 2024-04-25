@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
 sudo yum -y update
-sudo yum -y install python2-pip
-sudo pip install ansible==2.8.7
+sudo yum -y install python3-pip
+sudo pip install ansible
 
 ansible-playbook --connection=local -i "localhost," ansible/prepare-server.yml
 ansible-playbook --connection=local -i "localhost," ansible/install-traccar.yml
