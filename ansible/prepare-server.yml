@@ -29,28 +29,6 @@
       path: /etc/fstab
       line: "/swapfile swap swap defaults 0 0"
       
-  - name: Update all packages
-    yum:
-      name: '*'
-      state: latest
-      update_only: yes  
-
-  # Install packages
-  - name: Install some yum packages
-    become: yes
-    yum:
-      name:
-        - nc
-        - git
-        - python3-pip
-        - yum-utils
-        - device-mapper-persistent-data
-        - lvm2
-        - docker
-        - systemd-libs
-      state: present
-      lock_timeout: 300
-
   - name: Installing python library for the Docker Remote API
     pip:
       name: docker-py
